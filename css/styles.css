@@ -1,0 +1,134 @@
+:root {
+    --nunito: 2em/1.5 'Nunito', 'Helvetica Neue', sans-serif;
+    --open-sans: 1rem/1.5 'Open Sans', sans-serif;
+    --box-shadow: 0 0 10px 0 rgb(33 33 33 / 15%);
+    --black: #212121;
+    --red: #c0232a;
+}
+
+body {
+    color: var(--black);
+    font: var(--open-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1,
+h2 {
+    font: var(--nunito);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+h1 {
+    color: var(--red);
+}
+
+h2 {
+    font-size: 1.2rem;
+}
+
+/** utility classes **/
+
+.btn {
+    background-color: var(--black);
+    color: #fff;
+    border-radius: 0.1875rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 1rem auto 0;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+
+.btn:hover {
+    background-color: var(--red);
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inner-container {
+    max-width: 80rem; /** 1280px**/
+    margin: auto;
+    padding: 1rem;
+}
+
+.wide-flex {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.5rem;
+}
+
+/** header **/
+.info {
+    margin: auto;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.info p {
+    font-size: 1.25rem;
+    max-width: 60ch;
+    margin: auto;
+}
+
+/** cards **/
+
+.card {
+    border: 0.0625rem solid rgb(33 33 33 / 15%);
+    /* border: 0.0625rem solid rgba(33, 33, 33, 0.15); */
+    border-radius: 0.3125rem; /*85px**/
+    box-shadow: var(--box-shadow);
+}
+
+.card picture {
+    max-width: 40%;
+}
+/** if we target the picture element to try and round the corners, it won't affect anything. The picture is just a fancy container for the source and img elements **/
+
+.card source,
+.card img {
+    border-radius: 0.3125rem 0 0 0.3125rem;
+}
+
+.card-body {
+    padding: 1rem;
+    max-width: 60%;
+}
+
+@media screen and (min-width: 890px) {
+    .wide-flex {
+        flex-flow: row wrap;
+    }
+
+    .card.flex-container {
+        flex-direction: column;
+    }
+    /** There is a 1.5 gap and three cards, so we're working with two gutters (1.5 x 2 = 3rem of space distributtion). **/
+    .card {
+        width: calc((100% / 3) - (3rem / 3));
+    }
+
+    .card picture,
+    .card-body {
+        max-width: 100%;
+    }
+
+    .card source,
+    .card img {
+        border-radius: 0.3125rem 0.3125rem 0 0;
+    }
+    /*lastly lets give some more breathing in the large view **/
+    .card-body {
+        padding: 2rem;
+    }
+    .btn {
+        margin-top: 2rem;
+    }
+}
